@@ -4,122 +4,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hopkinton Property Services | Sales, Management & Handyman</title>
-    <!-- Tailwind CSS Engine for Layout & Design -->
-    <script src="https://tailwindcss.com"></script>
-    <!-- FontAwesome Library for Professional Interface Icons -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-</head>
-<body class="bg-slate-50 text-slate-800 font-sans scroll-smooth">
+    <!-- Native CSS Stylesheet Core Injection -->
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { bg-color: #f8fafc; color: #334155; line-height: 1.6; }
+        .scroll-smooth { scroll-behavior: smooth; }
+        
+        /* Navigation styling */
+        nav { background: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; left: 0; z-index: 100; border-b: 1px solid #e2e8f0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; px: 20px; display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .brand-text { font-size: 22px; font-weight: 800; color: #1e3a8a; tracking: -0.5px; }
+        .nav-links a { color: #475569; text-decoration: none; font-weight: 600; margin-left: 30px; font-size: 15px; transition: color 0.2s; }
+        .nav-links a:hover { color: #1e3a8a; }
+        .nav-links .btn-contact { background: #0f172a; color: #ffffff; padding: 10px 20px; border-radius: 6px; font-size: 14px; }
+        .nav-links .btn-contact:hover { background: #1e293b; }
 
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-sm fixed w-full z-50 top-0 left-0 border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div>
-                    <span class="text-xl font-bold text-blue-900 tracking-tight">Hopkinton Property Services</span>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#sales" class="text-slate-600 hover:text-blue-900 font-medium transition">Real Estate Sales</a>
-                    <a href="#management" class="text-slate-600 hover:text-blue-900 font-medium transition">Property Management</a>
-                    <a href="#handyman" class="text-slate-600 hover:text-blue-900 font-medium transition">Handyman Work</a>
-                    <a href="#contact" class="bg-blue-950 text-white px-5 py-2 rounded-md hover:bg-blue-900 transition font-semibold text-sm">Contact Us</a>
-                </div>
+        /* Hero Banner */
+        header { position: relative; padding: 160px 20px 100px 20px; background: #020617; text-align: center; color: #ffffff; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; opacity: 0.25; background-image: url('https://unsplash.com'); background-size: cover; background-position: center; z-index: 1; }
+        .hero-content { position: relative; max-width: 800px; margin: 0 auto; z-index: 2; }
+        .badge { background: rgba(30, 58, 138, 0.6); color: #bfdbfe; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 6px 16px; border-radius: 50px; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(29, 78, 216, 0.5); }
+        h1 { font-size: 48px; font-weight: 900; margin-bottom: 20px; line-height: 1.2; letter-spacing: -1px; }
+        .hero-subtitle { font-size: 18px; color: #cbd5e1; margin-bottom: 35px; font-weight: 300; }
+        .hero-btn-group a { display: inline-block; padding: 12px 28px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 14px; margin: 5px; transition: transform 0.2s; }
+        .btn-white { background: #ffffff; color: #0f172a; }
+        .btn-blue { background: #2563eb; color: #ffffff; }
+        .btn-green { background: #059669; color: #ffffff; }
+
+        /* Main Content Layout Grid */
+        main { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        section { padding: 60px 0; scroll-margin-top: 90px; }
+        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .reverse-grid .grid-img-col { order: 1; }
+        .reverse-grid .grid-text-col { order: 2; }
+        
+        /* Service Pillars Typography */
+        .icon-box { display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 10px; margin-bottom: 20px; font-size: 24px; font-weight: bold; }
+        .bg-b { background: #dbeafe; color: #1e3a8a; }
+        .bg-i { background: #e0e7ff; color: #3730a3; }
+        .bg-g { background: #d1fae5; color: #065f46; }
+        h2 { font-size: 32px; font-weight: 800; color: #0f172a; margin-bottom: 15px; letter-spacing: -0.5px; }
+        .desc-text { color: #475569; margin-bottom: 25px; font-size: 16px; }
+        .feature-list { list-style: none; }
+        .feature-list li { font-weight: 600; color: #334155; margin-bottom: 12px; display: flex; align-items: center; font-size: 15px; }
+        .feature-list li::before { content: "✓"; margin-right: 12px; font-weight: 900; font-size: 18px; }
+        .list-blue li::before { color: #2563eb; }
+        .list-indigo li::before { color: #4f46e5; }
+        .list-green li::before { color: #059669; }
+        .service-img { border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; object-fit: cover; width: 100%; height: 380px; display: block; }
+
+        /* Form styling */
+        .contact-box { background: #ffffff; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; padding: 50px; max-width: 700px; margin: 60px auto 0 auto; }
+        .form-title { text-align: center; font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+        .form-subtitle { text-align: center; color: #64748b; margin-bottom: 40px; font-size: 15px; }
+        .form-group { margin-bottom: 20px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; tracking: 0.5px; color: #475569; margin-bottom: 8px; }
+        input, select, textarea { width: 100%; padding: 12px 16px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 15px; color: #334155; outline: none; transition: border 0.2s, background 0.2s; }
+        input:focus, select:focus, textarea:focus { border-color: #2563eb; background: #ffffff; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+        .btn-submit { background: #1e3a8a; color: #ffffff; width: 100%; padding: 14px; font-weight: 700; border: none; border-radius: 6px; font-size: 15px; cursor: pointer; transition: background 0.2s; }
+        .btn-submit:hover { background: #1e40af; }
+
+        /* Footer */
+        footer { background: #0f172a; color: #94a3b8; padding: 40px 20px; text-align: center; font-size: 13px; border-t: 1px solid #1e293b; margin-top: 60px; }
+
+        /* Responsive Layout Overrides */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .grid-layout { grid-template-columns: 1fr; gap: 40px; }
+            .reverse-grid .grid-img-col { order: 2; }
+            .reverse-grid .grid-text-col { order: 1; }
+            h1 { font-size: 32px; }
+            .form-row { grid-template-columns: 1fr; gap: 20px; }
+            .contact-box { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body class="scroll-smooth">
+
+    <!-- Navigation Bar Layout -->
+    <nav>
+        <div class="nav-container">
+            <div>
+                <span class="brand-text">Hopkinton Property Services</span>
+            </div>
+            <div class="nav-links">
+                <a href="#sales">Real Estate Sales</a>
+                <a href="#management">Property Management</a>
+                <a href="#handyman">Handyman Work</a>
+                <a href="#contact" class="btn-contact">Contact Us</a>
             </div>
         </div>
     </nav>
 
-    <!-- Visual Hero Header Banner -->
-    <header class="relative pt-44 pb-32 bg-slate-950 text-white text-center px-4">
-        <div class="absolute inset-0 opacity-25 bg-cover bg-center" style="background-image: url('https://unsplash.com');"></div>
-        <div class="relative max-w-3xl mx-auto z-10">
-            <span class="bg-blue-900/60 text-blue-200 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-blue-700/50">Hopkinton, MA Solutions</span>
-            <h1 class="text-4xl md:text-5xl font-black mt-4 mb-4 tracking-tight leading-tight">Complete Property Management & Care</h1>
-            <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto font-light">From buying and selling to professional property oversight and immediate handyman repairs.</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#sales" class="bg-white text-slate-900 font-bold px-6 py-3 rounded-md shadow hover:bg-slate-100 transition text-sm">Sales Services</a>
-                <a href="#management" class="bg-blue-700 text-white font-bold px-6 py-3 rounded-md shadow hover:bg-blue-600 transition text-sm">Management</a>
-                <a href="#handyman" class="bg-emerald-600 text-white font-bold px-6 py-3 rounded-md shadow hover:bg-emerald-500 transition text-sm">Handyman Repairs</a>
+    <!-- Visual Interactive Hero Header -->
+    <header>
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <span class="badge">Hopkinton, MA Solutions</span>
+            <h1>Complete Property Management & Care</h1>
+            <p class="hero-subtitle">From buying and selling to professional property oversight and immediate handyman repairs.</p>
+            <div class="hero-btn-group">
+                <a href="#sales" class="btn-white">Sales Services</a>
+                <a href="#management" class="btn-blue">Management</a>
+                <a href="#handyman" class="btn-green">Handyman Repairs</a>
             </div>
         </div>
     </header>
 
-    <!-- Core Business Content Sections -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-28">
+    <!-- Core Grid Systems Content sections -->
+    <main>
         
         <!-- Pillar 1: Real Estate Sales -->
-        <section id="sales" class="scroll-mt-24">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-5">
-                    <div class="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-900 rounded-lg">
-                        <i class="fa-solid fa-house-sign text-xl"></i>
-                    </div>
-                    <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Real Estate Sales</h2>
-                    <p class="text-slate-600 leading-relaxed">Navigate the local property market with total confidence. Whether you are buying your dream home or listing an investment property, our expert brokerage approach ensures a seamless transaction from list to closing.</p>
-                    <ul class="space-y-3 font-semibold text-slate-700">
-                        <li class="flex items-center"><i class="fa-solid fa-square-check text-blue-600 mr-3 text-lg"></i> Comparative Market Analysis & Home Appraisals</li>
-                        <li class="flex items-center"><i class="fa-solid fa-square-check text-blue-600 mr-3 text-lg"></i> High-Definition Photography & Digital Marketing</li>
-                        <li class="flex items-center"><i class="fa-solid fa-square-check text-blue-600 mr-3 text-lg"></i> Client-First Buyer & Seller Representation</li>
+        <section id="sales">
+            <div class="grid-layout">
+                <div class="grid-text-col">
+                    <div class="icon-box bg-b">🏠</div>
+                    <h2>Real Estate Sales</h2>
+                    <p class="desc-text">Navigate the local property market with total confidence. Whether you are buying your dream home or listing an investment property, our expert brokerage approach ensures a seamless transaction from list to closing.</p>
+                    <ul class="feature-list list-blue">
+                        <li>Comparative Market Analysis & Home Appraisals</li>
+                        <li>High-Definition Photography & Digital Marketing</li>
+                        <li>Client-First Buyer & Seller Representation</li>
                     </ul>
                 </div>
-                <div>
-                    <img src="https://unsplash.com" alt="Real Estate Sales Presentation" class="rounded-xl shadow-md border border-slate-100 object-cover w-full h-80 md:h-[400px]">
+                <div class="grid-img-col">
+                    <img src="https://unsplash.com" alt="Real Estate Sales Presentation" class="service-img">
                 </div>
             </div>
         </section>
 
         <!-- Pillar 2: Property Management -->
-        <section id="management" class="scroll-mt-24">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="md:order-2 space-y-5">
-                    <div class="inline-flex items-center justify-center w-12 h-12 bg-indigo-100 text-indigo-900 rounded-lg">
-                        <i class="fa-solid fa-building-user text-xl"></i>
-                    </div>
-                    <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Property Management</h2>
-                    <p class="text-slate-600 leading-relaxed">Protect your high-value assets and enjoy passive revenue without the operational headache. We oversee active tenant alignment, dynamic rent processing, legal asset compliance, and hands-off owner pipelines.</p>
-                    <ul class="space-y-3 font-semibold text-slate-700">
-                        <li class="flex items-center"><i class="fa-solid fa-square-check text-indigo-600 mr-3 text-lg"></i> Complete Tenant Screening & Document Auditing</li>
-                        <li class="flex items-center"><i class="fa-solid fa-square-check text-indigo-600 mr-3 text-lg"></i> 24/7 Emergency Dispatch & Operational Care</li>
-                        <li class="flex items-center"><i class="fa-solid fa-square-check text-indigo-600 mr-3 text-lg"></i> Transparent Monthly Financial Statement Portals</li>
+        <section id="management">
+            <div class="grid-layout reverse-grid">
+                <div class="grid-text-col">
+                    <div class="icon-box bg-i">🏢</div>
+                    <h2>Property Management</h2>
+                    <p class="desc-text">Protect your high-value assets and enjoy passive revenue without the operational headache. We oversee active tenant alignment, dynamic rent processing, legal asset compliance, and hands-off owner pipelines.</p>
+                    <ul class="feature-list list-indigo">
+                        <li>Complete Tenant Screening & Document Auditing</li>
+                        <li>24/7 Emergency Dispatch & Operational Care</li>
+                        <li>Transparent Monthly Financial Statement Portals</li>
                     </ul>
                 </div>
-                <div class="md:order-1">
-                    <img src="https://unsplash.com" alt="Managed Buildings" class="rounded-xl shadow-md border border-slate-100 object-cover w-full h-80 md:h-[400px]">
+                <div class="grid-img-col">
+                    <img src="https://unsplash.com" alt="Managed Buildings" class="service-img">
                 </div>
             </div>
         </section>
 
-        <!-- Pillar 3: Handyman Work -->
-        <section id="handyman" class="scroll-mt-24">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-5">
-                    <div class="inline-flex items-center justify-center w-12 h-12 bg-emerald-100 text-emerald-900 rounded-lg">
-                        <i class="fa-solid fa-hammer text-xl"></i>
-                    </div>
-                    <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Handyman Work & Upkeep</h2>
-                    <p class="text-slate-600 leading-relaxed">No project task is too minor for our team. Keep your real estate structures operating flawlessly with responsive property maintenance, targeted repairs, and professional carpentry solutions.</p>
-                    <ul class="space-y-3 font-semibold text-slate-700">
-                        <li class="flex items-center"><i class="fa-solid fa-square-check text-emerald-600 mr-3 text-lg"></i> Drywall Structural Fixes, Carpentry & Remodels</li>
-                        <li class="flex items-center"><i class="fa-solid fa-square-check text-emerald-600 mr-3 text-lg"></i> Appliance Setup, Mechanical & Plumbing Adjustments</li>
-                        <li class="flex items-center"><i class="fa-solid fa-square-check text-emerald-600 mr-3 text-lg"></i> Scheduled Seasonal Preparation & Turnovers</li>
-                    </ul>
-                </div>
-                <div>
-                    <img src="https://unsplash.com" alt="Handyman Repair Work" class="rounded-xl shadow-md border border-slate-100 object-cover w-full h-80 md:h-[400px]">
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section with Live Email Processing Backend -->
-        <section id="contact" class="scroll-mt-24 py-12 bg-white rounded-xl shadow-sm border border-slate-200/60 p-6 md:p-12">
-            <div class="max-w-2xl mx-auto text-center mb-10">
-                <h2 class="text-3xl font-extrabold text-slate-900">Request Service or Consultation</h2>
-                <p class="text-slate-500 mt-2">Connect with our Hopkinton team. Choose your service category below to begin.</p>
-            </div>
-            
-            <!-- Replace info@hopkintonproperty.com below with your real business email address -->
-            <form action="https://formsubmit.co" method="POST" class="max-w-xl mx-auto space-y-6">
-                <!-- Hidden setting to send user back to your site after form submission -->
-                <input type="hidden" name="_next" value="https://hopkintonproperty.com">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2" for="name">Full Name</label>
