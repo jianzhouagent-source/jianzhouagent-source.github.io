@@ -27,6 +27,8 @@
         h1 { font-size: 48px; font-weight: 900; margin-bottom: 20px; line-height: 1.2; letter-spacing: -1px; }
         .hero-subtitle { font-size: 18px; color: #cbd5e1; margin-bottom: 35px; font-weight: 300; }
         .hero-contact { font-size: 22px; font-weight: 700; margin: 5px 0; color: #e2e8f0; letter-spacing: 0.5px; }
+        .hero-contact a { color: #e2e8f0; text-decoration: none; transition: color 0.2s; }
+        .hero-contact a:hover { color: #60a5fa; text-decoration: underline; }
         .hero-btn-group a { display: inline-block; padding: 12px 28px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 14px; margin: 5px; transition: transform 0.2s; }
         .btn-white { background: #ffffff; color: #0f172a; }
         .btn-blue { background: #2563eb; color: #ffffff; }
@@ -80,7 +82,11 @@
         /* Footer */
         footer { background: #0f172a; color: #94a3b8; padding: 40px 20px; text-align: center; font-size: 13px; border-top: 1px solid #1e293b; margin-top: 60px; }
         footer p { margin: 6px 0; }
+        footer .footer-brand { color: #ffffff; font-weight: 800; font-size: 18px; letter-spacing: -0.3px; margin-bottom: 4px; }
         footer .footer-contact { color: #cbd5e1; font-weight: 600; }
+        footer .footer-divider { width: 60px; height: 3px; background: linear-gradient(90deg, #2563eb, #059669); border-radius: 3px; margin: 20px auto 24px auto; }
+        footer a { color: inherit; text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: #60a5fa; text-decoration: underline; }
 
         /* Responsive Layout Overrides */
         @media (max-width: 768px) {
@@ -272,65 +278,67 @@
     </main>
 
     <!-- Footer -->
-<footer>
-    <p class="footer-brand">
-        <a href="/" style="color: inherit; text-decoration: none;">Hopkinton Property Services</a>
-    </p>
-    <div class="footer-divider"></div>
-    <p class="footer-contact">
-        📞 <a href="tel:5082827656">508-282-7656</a> &nbsp;|&nbsp; 
-        ✉️ <a href="mailto:hopkintonproperty@gmail.com">hopkintonproperty@gmail.com</a>
-    </p>
-    <p>Serving Hopkinton, MA & surrounding areas</p>
-    <p style="margin-top: 22px; font-size: 12px; color: #64748b;">© 2025 Hopkinton Property Services. All rights reserved.</p>
-</footer>
+    <footer>
+        <p class="footer-brand">
+            <a href="/" style="color: inherit; text-decoration: none;">Hopkinton Property Services</a>
+        </p>
+        <div class="footer-divider"></div>
+        <p class="footer-contact">
+            📞 <a href="tel:5082827656">508-282-7656</a> &nbsp;|&nbsp; 
+            ✉️ <a href="mailto:hopkintonproperty@gmail.com">hopkintonproperty@gmail.com</a>
+        </p>
+        <p>Serving Hopkinton, MA & surrounding areas</p>
+        <p style="margin-top: 22px; font-size: 12px; color: #64748b;">© 2025 Hopkinton Property Services. All rights reserved.</p>
+    </footer>
+
+    <!-- Formspree AJAX submission handler -->
     <script>
-document.getElementById('quoteForm').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const form = e.target;
-    const status = document.getElementById('formStatus');
-    const button = form.querySelector('button[type="submit"]');
-    const originalText = button.textContent;
+    document.getElementById('quoteForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const form = e.target;
+        const status = document.getElementById('formStatus');
+        const button = form.querySelector('button[type="submit"]');
+        const originalText = button.textContent;
 
-    // Loading state
-    button.disabled = true;
-    button.textContent = 'Sending...';
-    status.textContent = '';
-    status.style.color = '';
+        // Loading state
+        button.disabled = true;
+        button.textContent = 'Sending...';
+        status.textContent = '';
+        status.style.color = '';
 
-    try {
-        const response = await fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-        });
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
 
-        if (response.ok) {
-            // ✅ Success — replace form with thank-you message
-            form.innerHTML = `
-                <div style="text-align:center; padding: 30px 10px;">
-                    <div style="font-size: 48px; margin-bottom: 16px;">✅</div>
-                    <h3 style="font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 10px;">Thank you!</h3>
-                    <p style="color: #475569; font-size: 15px;">Your request has been sent. We'll get back to you within 24 hours at the email or phone number you provided.</p>
-                </div>
-            `;
-        } else {
-            const data = await response.json();
-            status.textContent = data.errors
-                ? data.errors.map(err => err.message).join(', ')
-                : 'Oops! Something went wrong. Please try again.';
+            if (response.ok) {
+                // ✅ Success — replace form with thank-you message
+                form.innerHTML = `
+                    <div style="text-align:center; padding: 30px 10px;">
+                        <div style="font-size: 48px; margin-bottom: 16px;">✅</div>
+                        <h3 style="font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 10px;">Thank you!</h3>
+                        <p style="color: #475569; font-size: 15px;">Your request has been sent. We'll get back to you within 24 hours at the email or phone number you provided.</p>
+                    </div>
+                `;
+            } else {
+                const data = await response.json();
+                status.textContent = data.errors
+                    ? data.errors.map(err => err.message).join(', ')
+                    : 'Oops! Something went wrong. Please try again.';
+                status.style.color = '#dc2626';
+                button.disabled = false;
+                button.textContent = originalText;
+            }
+        } catch (error) {
+            status.textContent = 'Network error. Please check your connection and try again.';
             status.style.color = '#dc2626';
             button.disabled = false;
             button.textContent = originalText;
         }
-    } catch (error) {
-        status.textContent = 'Network error. Please check your connection and try again.';
-        status.style.color = '#dc2626';
-        button.disabled = false;
-        button.textContent = originalText;
-    }
-});
-</script>
+    });
+    </script>
+
 </body>
 </html>
-```
