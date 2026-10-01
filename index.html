@@ -233,25 +233,25 @@
             <div class="contact-box">
                 <h3 class="form-title">Get a Free Estimate</h3>
                 <p class="form-subtitle">Tell us what you need — sales, management, handyman or junk removal. We'll get back to you within 24 hours with an affordable quote.</p>
-                <form onsubmit="event.preventDefault(); alert('Thank you! This is a demo form. In a live site, your message would be sent.');">
+                <form action="https://formspree.io/f/xoevzpoq" method="POST">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" id="name" placeholder="John Smith" required>
+                            <input type="text" id="name" name="name" placeholder="John Smith" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone</label>
-                            <input type="tel" id="phone" placeholder="508-555-0123" required>
+                            <input type="tel" id="phone" name="phone" placeholder="508-555-0123" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" placeholder="john@example.com" required>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
                         </div>
                         <div class="form-group">
                             <label for="service">Service Needed</label>
-                            <select id="service">
+                            <select id="service" name="service">
                                 <option value="sales">Real Estate Sales</option>
                                 <option value="management">Property Management</option>
                                 <option value="handyman" selected>Handyman Work</option>
@@ -261,7 +261,7 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Project Details</label>
-                        <textarea id="message" rows="4" placeholder="Tell us about your project, timeline, and any specific requests (e.g., hardwood flooring, valve replacement, junk pickup)."></textarea>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your project, timeline, and any specific requests (e.g., hardwood flooring, valve replacement, junk pickup)."></textarea>
                     </div>
                     <button type="submit" class="btn-submit">Request Free Quote →</button>
                 </form>
