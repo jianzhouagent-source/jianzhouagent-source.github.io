@@ -66,6 +66,25 @@
         /* Affordable banner for each section */
         .affordable-banner { display: inline-block; background: #ecfdf5; color: #065f46; font-weight: 700; font-size: 14px; padding: 8px 18px; border-radius: 30px; margin-bottom: 18px; border: 1px solid #a7f3d0; }
 
+        /* ⭐ Red button — Yard Sale link */
+        .btn-red {
+            display: inline-block;
+            padding: 13px 28px;
+            background: #dc2626;
+            color: #ffffff;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+        .btn-red:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.45);
+        }
+
         /* ⭐ Projects inside handyman section */
         .projects-subsection {
             margin-top: 60px;
@@ -222,7 +241,7 @@
             </div>
         </section>
 
-        <!-- ⭐ Handyman Work (with Past Projects nested inside) -->
+        <!-- Handyman Work -->
         <section id="handyman">
             <div class="grid-layout">
                 <div class="grid-text-col">
@@ -250,7 +269,7 @@
                 </div>
             </div>
 
-            <!-- ⭐ Past Projects nested inside Handyman section -->
+            <!-- Past Projects nested inside Handyman section -->
             <div class="projects-subsection" id="projects">
                 <div class="projects-subsection-header">
                     <h3>Recent Handyman Projects</h3>
@@ -342,6 +361,11 @@
                         <li>Same-day & next-day pickup available (call for details)</li>
                     </ul>
                     <p class="highlight-price">♻️ We donate & recycle whenever possible — affordable rates, friendly service</p>
+
+                    <!-- ⭐ Red button — Yard Sale link -->
+                    <div style="margin-top: 22px;">
+                        <a href="yardsale.html" class="btn-red">🛒 Shop Our Yard Sale</a>
+                    </div>
                 </div>
                 <div class="grid-img-col">
                     <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Junk removal truck loading debris" class="service-img">
